@@ -7,6 +7,8 @@ name = "pypi"
 psycopg2-binary = "*"
 django = "*"
 pillow = "*"
+folium = "*"
+django-bootstrap-v5 = "*"
 
 [dev-packages]
 

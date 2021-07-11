@@ -1,0 +1,41 @@
+{% extends 'bar/base.html' %}
+{% block content %}
+
+    <div class="container">
+        <h2>居酒屋マップ</h2>
+        <h4>{{ message }}</h4>
+
+        {% if searchForm %}
+            <form action="{% url 'bar:overview' %}" method="GET">
+                <div class="form-group">
+                    {{ searchForm }}
+                    <input type="submit" class="btn btn-outline-primary" value="OK">
+                    <a href="{% url 'bar:overview' %}" class="btn btn-outline-secondary">クリア</a>
+                </div>
+            </form>
+        {% endif %}
+
+        <div class="container">
+            <table class="table table-striped table-hover">
+                {% for article in articles %}
+                    <tr>
+                        <td>{{ article.content }}</td>
+                        <td>{{ article.user_name }}</td>
+                        <td>
+                            <a href="{% url 'bar:detail' article.id %}" class="btn btn-outline-primary">詳細</a>
+                            <a href="{% url 'bar:delete' article.id %}" class="btn btn-outline-secondary">削除</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="container">
+            <p>
+                <a href="{% url 'bar:create' %}" class="btn btn-outline-primary">追加</a>
+            </p>
+        </div>
+            
+    </div>
+
+{% endblock %}
+
