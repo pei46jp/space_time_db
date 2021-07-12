@@ -23,7 +23,6 @@
                         <td>{{ article.user_name }}</td>
                         <td>
                             <a href="{% url 'bar:detail' article.id %}" class="btn btn-outline-primary">詳細</a>
-                            <a href="{% url 'bar:delete' article.id %}" class="btn btn-outline-secondary">削除</a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -31,7 +30,7 @@
         </div>
         <div class="container">
             <p>
-                <a href="{% url 'bar:create' %}" class="btn btn-outline-primary">追加</a>
+                <a href="{% url 'bar:new' %}" class="btn btn-outline-primary">新規</a>
             </p>
         </div>
             

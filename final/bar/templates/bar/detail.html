@@ -5,5 +5,7 @@
         <p>{{ message }}</p>
         <p>{{ articles.content }}, {{ articles.user_name }}</p>
         <a href="{% url 'bar:overview' %}" class="btn btn-outline-primary">一覧</a>
+        <a href="{% url 'bar:edit' articles.id %}" class="btn btn-outline-primary">編集</a>
+        <a href="{% url 'bar:delete' articles.id %}" class="btn btn-outline-secondary">削除</a>
     </div>
 {% endblock %}

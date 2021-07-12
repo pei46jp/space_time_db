@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from .models import Article
-from .forms import SearchForm
+from .forms import *
 
 
 def base(request):
@@ -37,27 +37,52 @@ def detail(request, id):
 
 
 def new(request):
-    return HttpResponse('This is new.')
+    articleForm = ArticleForm()
+
+    context = {
+        'message': 'New Article',
+        'articleForm': articleForm,
+    }
+    return render(request, 'bar/new.html', context)
 
 
 def create(request):
-    article = Article(content='居酒屋名', user_name='my')
-    article.save()
+    if request.method == 'POST':
+        articleForm = ArticleForm(request.POST)
+        if articleForm.is_valid():
+            articles = articleForm.save()
 
-    articles = Article.objects.all()
     context = {
-        'message': '居酒屋情報 追加',
+        'message': '居酒屋情報 追加' + str(articles.id),
         'articles': articles,
     }
-    return render(request, 'bar/overview.html', context)
+    return render(request, 'bar/detail.html', context)
 
 
 def edit(request, id):
-    return HttpResponse('This is edit ' + str(id))
+    articles = get_object_or_404(Article, pk=id)
+    articleForm = ArticleForm(instance=articles)
+
+    context = {
+        'message': 'Edit Article',
+        'articles': articles,
+        'articleForm': articleForm,
+    }
+    return render(request, 'bar/edit.html', context)
 
 
 def update(request, id):
-    return HttpResponse('This is update ' + str(id))
+    if request.method == 'POST':
+        articles = get_object_or_404(Article, pk=id)
+        articleForm = ArticleForm(request.POST, instance=articles)
+        if articleForm.is_valid():
+            articleForm.save()
+    
+    context = {
+        'message': 'Update article' + str(id),
+        'articles': articles,
+    }
+    return render(request, 'bar/detail.html', context)
 
 
 def delete(request, id):
