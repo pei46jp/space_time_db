@@ -1,0 +1,19 @@
+{% extends 'barmap/base.html' %}
+{% block content %}
+
+    <div class="container">
+        <h2>居酒屋情報の {{ object|yesno:'更新,作成'}}</h2>
+        
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="submit btn btn-primary">
+                {{ object|yesno:'更新,作成'}}
+            </button>
+        </form>
+        <div>
+            <p><a href='JavaScript:history.back()' class="btn btn-secondary">&lt; 戻る</a></p>
+        </div>
+    </div>
+
+{% endblock %}

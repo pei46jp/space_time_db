@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bar.apps.BarConfig',
+    'barmap.apps.BarmapConfig',
     'bootstrap5',
 ]
 

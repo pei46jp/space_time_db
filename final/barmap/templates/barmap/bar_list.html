@@ -1,0 +1,26 @@
+{% extends 'barmap/base.html' %}
+{% block content %}
+
+    <div class="container">
+        <h2>お店一覧</h2>
+        <table class="table table-striped table-hover">
+            <tr>
+                <th>Category</th><th>Bar-Name</th><th>Bar-Address</th>
+            </tr>
+            {% for bar in object_list %}
+                <tr>
+                    <td>{{ bar.category.name }}</td>
+                    <td>
+                        <a href="{% url 'barmap:detail' bar.pk %}">{{ bar.name }}</a>
+                    </td>
+                    <td>{{ bar.address }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+
+        <div>
+            <a href="{% url 'barmap:create' %}">新しい居酒屋</a>
+        </div>
+    </div>
+
+{% endblock %}
