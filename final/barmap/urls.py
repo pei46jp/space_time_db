@@ -1,3 +1,4 @@
+from os import name
 from django.urls import path
 from django.views.generic.edit import DeleteView
 from . import views
@@ -8,6 +9,8 @@ app_name = 'barmap'
 urlpatterns = [
     path('', views.home, name='home'),
     path('barlist', views.IndexView.as_view(), name='index'),
+    # path('personal/', views.personal, name='personal'),
+    path('personal/', views.PersonalView.as_view(), name='personal'),
     path('<int:pk>/', views.DetailView.as_view(), name='detail'),
     path('create/', views.CreateView.as_view(), name='create'),
     path('<int:pk>/update/', views.UpdateView.as_view(), name='update'),

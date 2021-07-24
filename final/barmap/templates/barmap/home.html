@@ -1,15 +1,16 @@
-{% extends 'barmap/base.html' %}
+{% extends 'layout.html' %}
 {% block content %}
 
-    <div class="container">
+    <div class="container py-5">
         <h1>時空間データベース 最終課題</h1>
         <h2>居酒屋マップ</h2>
         <p>行ったことのある、もしくは行った当日に気に入った居酒屋を登録することで、次に行く特に検索が楽になる。</p>
-        <p>ユーザ同士レコメンドやシェアなどもできればいいなと思ってはいる</p>
+
+        <h4>初めて居酒屋を登録する際は右上から Sign Up してください。</h4>
     </div>
 
-    <div class="container">
+    <!-- <div class="container">
         <a href="{% url 'barmap:index' %}" class="btn btn-primary">居酒屋リスト</a>
-    </div>
+    </div> -->
 
 {% endblock %}

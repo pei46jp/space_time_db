@@ -1,11 +1,24 @@
-{% extends 'barmap/base.html' %}
+{% extends 'layout.html' %}
 {% block content %}
 
-    <div class="container">
+    <div class="container py-5">
         <h2>{{ bar.name }}</h2>
-
-        <p>{{ bar.category.name }}</p>
-        <p>{{ bar.address }}</p>
+        <div class="container">
+            <h4>カテゴリ</h4>
+            <p>{{ bar.category.name }}</p>
+        </div>
+        <div class="container">
+            <h4>住所</h4>
+            <p>{{ bar.address }}</p>
+        </div>
+        <div class="container">
+            <h4>予算 前回いくらかかったか</h4>
+            <p>{{ bar.budget }}</p>
+        </div>
+        <div class="container">
+            <h4>美味しかったメニュー</h4>
+            <p>{{ bar.recommend_menu }}</p>
+        </div>
         <iframe id='map'
             src='https://www.google.com/maps/embed/v1/place?key=AIzaSyDXpwWA_2U7h1jwllotq047nLOOVY8RUEo&amp;q={{ bar.address }}'
             width='100%'
@@ -14,9 +27,11 @@
         </iframe>
     </div>
     <div>
-        <a href="{% url 'barmap:index' %}">一覧</a> |
-        <a href="{% url 'barmap:update' bar.pk %}">編集</a> |
-        <a href="{% url 'barmap:delete' bar.pk %}">削除</a> |
+        <a href="{% url 'barmap:index' %}">一覧</a>
+        {% if request.user.id == object.author_id %}
+            | <a href="{% url 'barmap:update' bar.pk %}">編集</a>
+            | <a href="{% url 'barmap:delete' bar.pk %}">削除</a>
+        {% endif %}
     </div>
 
 {% endblock %}

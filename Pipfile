@@ -9,6 +9,9 @@ django = "*"
 pillow = "*"
 folium = "*"
 django-bootstrap-v5 = "*"
+googlemaps = "*"
+pygeocoder = "*"
+django-environ = "*"
 
 [dev-packages]
 
