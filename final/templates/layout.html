@@ -4,6 +4,15 @@
 
 <html lang="ja">
     <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-171537138-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-171537138-1');
+        </script>
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width initial-scale=1.0">
         <title>Barmap</title>
@@ -12,11 +21,9 @@
     </head>
     <body>
         <header>
-            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #4eaa96;">
+            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #008F7E;">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">
-                        <img src="{% static 'img/brand.png' %}" width="100" alt="brand" class="d-inline-block align-text-top">
-                    </a>
+                    <a class="navbar-brand" href="#">PEI46JP - Barmap -</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -39,7 +46,7 @@
                         </ul>
                         <ul class="navbar-nav mb-2 mb-lg-0">
                             {% if user.is_authenticated %}
-                                <li class='nav-time'>
+                                <li class='nav-item'>
                                     <span class='nav-link'>- {{ user }} - </span>
                                 </li>
                                 <li class='nav-item'>
@@ -65,9 +72,37 @@
             {% endblock %}
         </main>
 
-        <footer class="bg-light mt-3 text-center text-lg-start">
-            <div class="text-center p-3">
-                <p>Copyright 2021 Hagimoto Shinpei</p>
+        <div class="mt-auto p-3" style="background-color: #C8EFEA;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 p-3 text-center">
+                        <h5>Brand (仮)</h5>
+                        <img src="./brand.png" width="120" alt="Brand">
+                    </div>
+                    <div class="col-lg-9 p-3">
+                        <div class="row">
+                            <div class="col-4">
+                                <h5>Univ.</h5>
+                                <a href="#">Faculty of Data Science, Musashino University.</a>
+                            </div>
+                            <div class="col-4">
+                                <h5>Contact</h5>
+                                <p>hello@pei46.jp</p>
+                            </div>
+                            <div class="col-4">
+                                <h5>Pien</h5>
+                                <p>paon</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer mt-auto text-center p-1" style="background-color: #008F7E;">
+            <div class="container my-2">
+                <p class="text-center" style="color: #ffffff;">
+                    ©︎ 2020-2021 Shinpei-hagimoto<br>
+                </p>
             </div>
         </footer>
     </body>
