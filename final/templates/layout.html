@@ -38,14 +38,12 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'barmap:create' %}">add_bar</a>
                             </li>
-                            {% if user.is_authenticated %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'barmap:personal' %}">Personal</a>
-                            </li>
-                            {% endif %}
                         </ul>
                         <ul class="navbar-nav mb-2 mb-lg-0">
                             {% if user.is_authenticated %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'barmap:personal' %}">My page</a>
+                                </li>
                                 <li class='nav-item'>
                                     <span class='nav-link'>- {{ user }} - </span>
                                 </li>
@@ -66,7 +64,7 @@
             </nav>
         </header>
 
-        <main class="container" style="min-height: 75vh;">
+        <main class="container" style="min-height: 70vh;">
             {% block content %}
 
             {% endblock %}
